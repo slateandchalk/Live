@@ -1,0 +1,32 @@
+<div class="spacer" fxHide="false" fxHide.xs="true"></div>
+<br>
+<div class="fetch-loading" *ngIf="isNodata">
+    <p>No record found.</p>
+</div>
+<div class="status-wing" *ngFor="let user of archives | async; let i = index">
+    <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{user.eventId}}
+            </mat-panel-title>
+            <mat-panel-description fxHide="false" fxHide.xs="true">
+                {{user.eventName}}
+            </mat-panel-description>
+            <mat-icon color="primary" *ngIf="user.approvedStatus" fxHide="false" fxHide.xs="true">check_circle
+            </mat-icon>
+            <mat-icon color="accent" *ngIf="!user.approvedStatus" fxHide="false" fxHide.xs="true">block</mat-icon>
+        </mat-expansion-panel-header>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <p fxFlex="50%">From: {{user.eventFrom}}</p>
+            <p fxFlex="50%">To: {{user.eventTo}}</p>
+        </div>
+        <mat-action-row>
+            <button mat-button color="primary" disabled>Report</button>
+            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+    <div class="spacer" fxHide="false" fxHide.xs="true"></div>
+</div>
+
+<button mat-fab color="primary" class="fab-button" routerLink="/dashboard/create-event"><mat-icon>add</mat-icon></button>

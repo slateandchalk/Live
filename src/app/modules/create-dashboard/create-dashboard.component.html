@@ -1,0 +1,52 @@
+<button mat-fab color="warn" class="fab-button" routerLink="/dashboard"><mat-icon>keyboard_backspace</mat-icon></button>
+<div fxLayout="row" fxLayoutAlign="center start" class="mat-typography">
+    <div fxFlex="50%" fxFlex.xs="95%">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <div><h2 *ngIf="auth.user$ | async as user;">Hi! {{user.displayName || 'Howdy'}}</h2></div>
+                    <div><h5>{{today | date: 'EEEE, MMMM d, y, h:mm:ss a zzzz'}}</h5></div>
+            </div>
+
+            <div class="div-container mat-elevation-z2">
+
+                <form [formGroup]="createForm" novalidate (ngSubmit)="onSubmit(selectHead)">
+                        <div fxLayout fxLayout.xs="column" fxLayoutGap="10px">
+                                <mat-form-field appearance="fill" fxFlex="100%" fxFlex.xs="100%">
+                                        <mat-label>Event category</mat-label>
+                                        <mat-select formControlName="eventHead" [(ngModel)]="selectHead">
+                                                <mat-option [value]="head" *ngFor="let head of heads | async">{{ head.eventCategory }}</mat-option>
+                                        </mat-select>
+                                </mat-form-field>
+                        </div>
+
+                        <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px">
+                                <mat-form-field appearance="fill" fxFlex="50%" fxFlex.xs="100%">
+                                        <mat-label>Event Name</mat-label>
+                                        <input matInput formControlName="eventName" type="text">
+                                </mat-form-field>
+
+                                <mat-form-field appearance="fill" fxFlex="50%" fxFlex.xs="100%">
+                                        <mat-label>Event Type</mat-label>
+                                        <mat-select formControlName="eventType">
+                                                <mat-option value="O">Organizing</mat-option>
+                                                <mat-option value="A">Addenting</mat-option>
+                                        </mat-select>
+                                </mat-form-field>
+                        </div>
+
+                        <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px">
+                                <mat-form-field appearance="fill" fxFlex="50%" fxFlex.xs="100%">
+                                        <mat-label>Event From</mat-label>
+                                        <input matInput formControlName="eventFrom" type="datetime-local">
+                                </mat-form-field>
+                                
+                                <mat-form-field appearance="fill" fxFlex="50%" fxFlex.xs="100%">
+                                        <mat-label>Event To</mat-label>
+                                        <input matInput formControlName="eventTo" type="datetime-local">
+                                </mat-form-field>
+                        </div>
+                        
+                        <button color="primary" mat-raised-button [disabled]='!createForm.valid' type="submit">Submit</button>
+                </form>
+        </div>
+    </div>
+</div>

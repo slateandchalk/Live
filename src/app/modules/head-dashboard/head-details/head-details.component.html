@@ -1,0 +1,32 @@
+<form [formGroup]="createForm" novalidate>
+    <div fxLayout fxLayout.xs="column" fxLayoutGap="10px">
+            <mat-form-field appearance="fill" fxFlex="100%" fxFlex.xs="100%">
+                <mat-label>Event Name</mat-label>
+                <input matInput formControlName="eventName" type="text">
+        </mat-form-field>
+    </div>
+
+    <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px">
+            <mat-form-field appearance="fill" fxFlex="50%" fxFlex.xs="100%">
+                <mat-label>Event category</mat-label>
+                <input matInput formControlName="eventHead" type="text">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" fxFlex="50%" fxFlex.xs="100%">
+                    <mat-label>Event Type</mat-label>
+                    <input matInput formControlName="eventType" type="text">
+            </mat-form-field>
+    </div>
+
+    <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px">
+            <mat-form-field appearance="fill" fxFlex="50%" fxFlex.xs="100%">
+                    <mat-label>Event From</mat-label>
+                    <input matInput formControlName="eventFrom" type="datetime-local">
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill" fxFlex="50%" fxFlex.xs="100%">
+                    <mat-label>Event To</mat-label>
+                    <input matInput formControlName="eventTo" type="datetime-local">
+            </mat-form-field>
+    </div>
+</form>

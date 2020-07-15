@@ -1,0 +1,33 @@
+<mat-nav-list>
+<h2 matSubheader>
+    Client
+</h2>
+
+<a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">Dashboard</a>
+
+<mat-divider></mat-divider>
+
+<h2 matSubheader *ngIf="(access.access$ | async)?.role.head;">
+    Head
+</h2>
+
+<a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/head-approval">Approval</a>
+
+<mat-divider></mat-divider>
+
+<h2 matSubheader>
+    PA
+</h2>
+
+<a mat-list-item routerLinkActive="list-item-active" routerLink="/pa-approval">Approval</a>
+
+<mat-divider></mat-divider>
+
+<h2 matSubheader>
+    Principal
+</h2>
+<a mat-list-item routerLinkActive="list-item-active" routerLink="/principal-approval">Approval</a>
+
+<mat-divider></mat-divider>
+
+</mat-nav-list>

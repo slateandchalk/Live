@@ -1,0 +1,18 @@
+<mat-card>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <img mat-card-sm-image [src]="data.notification.icon" alt="User photoURL" fxFlex="25">
+            <div fxLayout="column">
+            <mat-card-header fxFlex="25" fxLayoutAlign="space-between center">
+                    <mat-card-title>{{data.notification.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxFlex="50">
+                <p>
+                {{data.notification.body}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions fxFlex="25">
+                <button mat-button>Close</button>
+            </mat-card-actions>
+        </div>
+        </div>
+      </mat-card>      
